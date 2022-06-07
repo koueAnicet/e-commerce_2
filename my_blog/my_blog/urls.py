@@ -22,4 +22,4 @@ urlpatterns = [
     #path('', include('blog.urls')),
     path('', home, name="home"),
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)# permet d'afficher les images
