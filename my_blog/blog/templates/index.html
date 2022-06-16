@@ -1,28 +1,8 @@
 
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>My Blog</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="{% static 'img/mdb-favicon.ico' %}" type="image/x-icon">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
-  <!-- Your custom styles (optional) --> 
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<!--Navbar-->
-  {% include '_nav.html' %}
+{% extends 'base.html' %}
+{% block 'main' %}
+
+
 <!--/.Navbar-->
   <h1 class="text-center mt-4" >Bienvenue notre Blog!</h1>
   <div class="container">
@@ -32,17 +12,18 @@
       <div class="col-12 col-md-6 col-lg-3 col-xl-3" >
           <div class="card mt-4"><!-- tel:col-3;tab:col-md-6;pc:col-lg-3;desktop:col-xl-3-->
             <!-- Card image -->
-            <img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap" style="height: 200px;">
+            <a href="{% url 'detail' article.id %}" ><img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap" style="height: 200px;"> </a>
+            
             <!-- Card content -->
             <div class="card-body" style="height: 240px;">
     
               <!-- Title -->
-              <h4 class="card-title"><a>{{ article.title }}</a></h4>
+              <h4 class="card-title"><a href="{% url 'detail' article.id %}">{{ article.title }}</a></h4>
               <!-- Text truncer:reduire ; date publication -->
               <p class="card-text">{{ article.description|truncatewords:8}}</p>
               <p class="card-text">Publié y a {{ article.created_at|timesince}}</p>
               <!-- Button -->
-              <a href="#" class="btn btn-primary">Lire la suite</a>
+              <a href="{% url 'detail' article.id %}" class="btn btn-primary">Lire la suite</a>
     
             </div>
           </div>
@@ -52,18 +33,6 @@
       {% endfor %}
     </div>
   </div>
-  {% include '_footer.html' %}
-
-  <!-- jQuery -->
-  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript"></script>
-
-</body>
-</html>
+  
+{% endblock 'main' %}
+  

@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from blog.views import home
+from blog.views import home, detail
 urlpatterns = [
     #path('', include('blog.urls')),
     path('', home, name="home"),
     path('admin/', admin.site.urls),
+    path('article/<int:id_article>', detail, name='detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)# permet d'afficher les images
