@@ -12,8 +12,12 @@
       <div class="col-12 col-md-6 col-lg-3 col-xl-3" >
           <div class="card mt-4"><!-- tel:col-3;tab:col-md-6;pc:col-lg-3;desktop:col-xl-3-->
             <!-- Card image -->
-            <a href="{% url 'detail' article.id %}" ><img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap" style="height: 200px;"> </a>
-            
+            <!-- si article pas d'image-->
+            {% if article.image == "http://default"  %}
+              <a href="{% url 'detail' article.id %}" ><img class="card-img-top" src="https://via.placeholder.com/400x300" alt="Card image cap" style="height: 200px;"> </a>
+            {% else %}
+              <a href="{% url 'detail' article.id %}" ><img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap" style="height: 200px;"> </a>
+            {% endif %}
             <!-- Card content -->
             <div class="card-body" style="height: 240px;">
     

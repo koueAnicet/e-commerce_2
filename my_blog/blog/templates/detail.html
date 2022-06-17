@@ -1,11 +1,21 @@
 {% extends "base.html" %}
-    {% block "main" %}
-    
-        <h1 class="text-center mt-4">Détail de {{ article.title }}</h1>
+{% load static %}
+{% block 'main' %}
 
-        <img src="{{ article.image.url}}" alt="">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="text-center mt-4">Détail de {{ article.title }}</h1>
 
-        <h2>{{ article.title }}</h2>
-        <p>{{ article.description }}</p>
+            <img src="{{ article.image.url}}" alt="" style="width: 700px; height:500px;">
 
-    {% endblock  %}
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.description }}</p>
+        </div>
+        <div class="col-md-4">
+             <h3 class="mt-4">Les articles en relations</h3>
+        </div>
+    </div>
+</div>
+
+{% endblock 'main' %}

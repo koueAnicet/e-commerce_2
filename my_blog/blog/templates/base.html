@@ -21,11 +21,12 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+
     {% include '_nav.html' %}
-     {% block 'main' %}
-        
-     {% endblock   %}
-     {% include '_footer.html' %}
+      {% block 'main' %}
+      {% endblock 'main' %}
+    {% include '_footer.html' %}
+    
     <!-- jQuery -->
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
